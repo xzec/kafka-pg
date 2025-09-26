@@ -1,0 +1,6 @@
+{
+  "extends": "@repo/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  }
+}

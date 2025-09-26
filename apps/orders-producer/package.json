@@ -1,0 +1,25 @@
+{
+  "name": "@kafka/orders-producer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsdown src/index.ts",
+    "start": "pnpm run build && node dist/index.js",
+    "dev": "tsdown src/index.ts --watch --onSuccess \"node dist/index.js\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "nanoid": "^5.0.7"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^24.5.2",
+    "tsdown": "^0.15.4",
+    "typescript": "^5.9.2"
+  }
+}
