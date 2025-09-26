@@ -16,6 +16,9 @@ This repository is to help me, a Human, learn about Kafka.
     - Storage: Use Redis for fast state/cache of aggregates.
 - Docker: Spin up Kafka, Redis with Docker Compose for easy dev.
 
+## Rules
+- Do not document code and usage in README.md unless asked for.
+
 ## Dev environment tips
 - Use `pnpm dlx turbo run where <project_name>` to jump to a package instead of scanning with `ls`.
 - Run `pnpm install --filter <project_name>` to add the package to your workspace so Vite, ESLint, and TypeScript can see it.
