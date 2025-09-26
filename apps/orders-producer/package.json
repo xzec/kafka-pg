@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "kafkajs": "^2.2.4",
+    "@platformatic/kafka": "^1.14.0",
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
