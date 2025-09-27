@@ -1,24 +1,16 @@
 import { jsonSerializer, Producer, stringSerializer } from '@platformatic/kafka'
-import type { Order } from '~/types.js'
-import { buildOrder } from '~/utils/buildOrder.js'
-import { wait } from '~/utils/wait.js'
+import { env } from '~/env'
+import type { Order } from '~/types'
+import { buildOrder } from '~/utils/buildOrder'
+import { wait } from '~/utils/wait'
 
-const brokers = (process.env.KAFKA_BROKERS ?? 'localhost:9092')
-  .split(',')
-  .map((entry) => entry.trim())
-  .filter(Boolean)
-
-const topic = process.env.ORDERS_TOPIC ?? 'orders'
-const batchSize = Number.parseInt(process.env.ORDER_BATCH_SIZE ?? '10', 10)
-const pauseMs = Number.parseInt(process.env.ORDER_PAUSE_MS ?? '250', 10)
-
-if (brokers.length === 0) {
-  throw new Error('KAFKA_BROKERS must include at least one broker address')
-}
+const batchSize = env.ORDER_BATCH_SIZE
+const pauseMs = env.ORDER_PAUSE_MS
 
 const producer = new Producer<string, Order, string, string>({
-  clientId: 'orders-producer',
-  bootstrapBrokers: brokers,
+  producerId: env.KAFKA_PRODUCER_ID,
+  clientId: env.KAFKA_CLIENT_ID,
+  bootstrapBrokers: env.KAFKA_BROKERS,
   serializers: {
     key: stringSerializer,
     value: jsonSerializer<Order>,
@@ -33,12 +25,12 @@ for (let i = 0; i < batchSize; i += 1) {
   await producer.send({
     messages: [
       {
-        topic,
+        topic: env.KAFKA_TOPIC,
         key: order.orderId,
         value: order,
         headers: {
           'content-type': 'application/json',
-          source: 'orders-producer',
+          source: env.KAFKA_HEADER_SOURCE,
         },
       },
     ],

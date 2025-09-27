@@ -2,6 +2,7 @@
   "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "formatter": {
+    "formatWithErrors": true,
     "indentStyle": "space",
     "lineEnding": "lf",
     "lineWidth": 120
@@ -20,7 +21,8 @@
         "useButtonType": "off"
       },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noProcessEnv": "error"
       },
       "correctness": {
         "noUnusedImports": "error",

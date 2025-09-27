@@ -20,9 +20,15 @@ importers:
       '@platformatic/kafka':
         specifier: ^1.14.0
         version: 1.14.0
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
       nanoid:
         specifier: ^5.0.7
         version: 5.1.6
+      zod:
+        specifier: ^4.1.11
+        version: 4.1.11
     devDependencies:
       '@repo/tsconfig':
         specifier: workspace:*
@@ -34,8 +40,8 @@ importers:
         specifier: 7.0.0-dev.20250926.1
         version: 7.0.0-dev.20250926.1
       tsdown:
-        specifier: ^0.15.4
-        version: 0.15.4(@typescript/native-preview@7.0.0-dev.20250926.1)(typescript@5.9.2)
+        specifier: ^0.15.5
+        version: 0.15.5(@typescript/native-preview@7.0.0-dev.20250926.1)(typescript@5.9.2)
 
   packages/tsconfig: {}
 
@@ -510,6 +516,10 @@ packages:
     resolution: {integrity: sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg==}
     engines: {node: '>=0.3.1'}
 
+  dotenv@17.2.2:
+    resolution: {integrity: sha512-Sf2LSQP+bOlhKWWyhFsn0UsfdK/kCWRv1iuA2gXAwt3dyNabr6QSj00I2V10pidqz69soatm9ZwZvpQMTIOd5Q==}
+    engines: {node: '>=12'}
+
   dts-resolver@2.1.2:
     resolution: {integrity: sha512-xeXHBQkn2ISSXxbJWD828PFjtyg+/UrMDo7W4Ffcs7+YWCquxU8YjV1KoxuiL+eJ5pg3ll+bC6flVv61L3LKZg==}
     engines: {node: '>=20.18.0'}
@@ -652,8 +662,8 @@ packages:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
 
-  tsdown@0.15.4:
-    resolution: {integrity: sha512-aoFE8disBg8BgYcOgradr/5Yd+QDBRQ+6z8mXo/Ib7+GIaJwJsI5l/ppve05CZGcSDqwdhF4gdrA0HPHBtbBqA==}
+  tsdown@0.15.5:
+    resolution: {integrity: sha512-2UP5hDBVYGHnnQSIYtDxMDjePmut7EDpvW5E2kVnjpZ17JgiPvRJPHwk5Dm045bC75+q8yxAlw/CMIELymTWaw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -721,6 +731,9 @@ packages:
 
   undici-types@7.12.0:
     resolution: {integrity: sha512-goOacqME2GYyOZZfb5Lgtu+1IDmAlAEu5xnD3+xTzS10hT0vzpf0SPjkXwAw9Jm+4n/mQGDP3LO8CPbYROeBfQ==}
+
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
 snapshots:
 
@@ -1055,6 +1068,8 @@ snapshots:
 
   diff@8.0.2: {}
 
+  dotenv@17.2.2: {}
+
   dts-resolver@2.1.2: {}
 
   empathic@2.0.0: {}
@@ -1205,7 +1220,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.15.4(@typescript/native-preview@7.0.0-dev.20250926.1)(typescript@5.9.2):
+  tsdown@0.15.5(@typescript/native-preview@7.0.0-dev.20250926.1)(typescript@5.9.2):
     dependencies:
       ansis: 4.1.0
       cac: 6.7.14
@@ -1271,3 +1286,5 @@ snapshots:
       quansync: 0.2.11
 
   undici-types@7.12.0: {}
+
+  zod@4.1.11: {}
