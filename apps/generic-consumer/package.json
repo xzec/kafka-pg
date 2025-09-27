@@ -1,0 +1,23 @@
+{
+  "name": "@repo/generic-consumer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsdown src/index.ts",
+    "start": "pnpm run build && node dist/index.js",
+    "typecheck": "tsgo --noEmit",
+    "biomecheck": "biome check"
+  },
+  "dependencies": {
+    "@platformatic/kafka": "^1.14.0",
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^24.5.2",
+    "@typescript/native-preview": "7.0.0-dev.20250926.1",
+    "tsdown": "^0.15.5"
+  }
+}
