@@ -7,7 +7,7 @@
     "build": "tsdown src/index.ts",
     "start": "pnpm run build && node dist/index.js",
     "dev": "tsdown src/index.ts --watch --onSuccess \"node dist/index.js\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
     "@platformatic/kafka": "^1.14.0",
