@@ -6,4 +6,4 @@ apply: always
 
 ## Git
 - prefer writing lowercase commit messages, do not capitalize the beginnings of the sentences.
-- no need to apply markdown-like formatting to commit messages, like backticks for inline code or asterisks for bold.
+- no need to apply formatting to commit messages, turn `code` to code
