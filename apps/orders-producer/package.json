@@ -8,7 +8,8 @@
     "start:orders": "NODE_ENV=orders pnpm run build && node dist/index.js",
     "start:payments": "NODE_ENV=payments pnpm run build && node dist/index.js",
     "dev:orders": "tsdown src/index.ts --env.NODE_ENV=orders --watch --onSuccess \"node dist/index.js\"",
-    "typecheck": "tsgo --noEmit"
+    "typecheck": "tsgo --noEmit",
+    "biomecheck": "biome check"
   },
   "dependencies": {
     "@platformatic/kafka": "^1.14.0",

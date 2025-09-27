@@ -1,5 +1,6 @@
 import { customAlphabet } from 'nanoid'
-import type { Order } from '~/types.js'
+
+import type { Order } from '~/orders/types'
 
 const generateId = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 12)
 
