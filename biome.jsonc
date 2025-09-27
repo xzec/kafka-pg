@@ -3,6 +3,7 @@
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "formatter": {
     "indentStyle": "space",
+    "lineEnding": "lf",
     "lineWidth": 120
   },
   "javascript": {

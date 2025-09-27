@@ -1,0 +1,18 @@
+# Top-level EditorConfig
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = false
+trim_trailing_whitespace = true
+charset = utf-8
+
+# JetBrains-specific overrides (what WebStorm obeys when adding imports)
+ij_javascript_use_double_quotes = false
+ij_typescript_use_double_quotes = false
+
+ij_javascript_spaces_within_imports = true
+ij_typescript_spaces_within_imports = true
+
+ij_javascript_use_semicolon_after_statement = false
+ij_typescript_use_semicolon_after_statement = false
