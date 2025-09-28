@@ -27,6 +27,7 @@ This repository is to help me, a Human, learn about Kafka.
 - Use `tsdown` to bundle Node.js apps.
 - Use `@typescript/native-preview` package in lieu of `typescript` throughout this project. The command changes from `tsc` to `tsgo`.
 - Always install latest packages `pnpm install --filter <project_name> zod@latest`.
+- Do not use a "main" function in Node.js. The top-level await is officially supported now.
 
 ## Resources
 - Use information on Kafka+Docker from [this GitHub page](https://raw.githubusercontent.com/apache/kafka/refs/heads/trunk/docker/examples/README.md).
