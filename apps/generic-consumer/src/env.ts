@@ -48,6 +48,7 @@ const envSchema = z.object({
     .positive()
     .default(5000)
     .describe('Autocommit interval in milliseconds; set 0 to disable automatically committing offsets.'),
+  REDIS_URL: z.string().min(1, 'REDIS_URL is required').startsWith('redis://').describe('URL to redis.'),
 })
 
 const parsedEnv = envSchema.safeParse(process.env)

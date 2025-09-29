@@ -2,8 +2,10 @@ import { Consumer, jsonDeserializer, stringDeserializer } from '@platformatic/ka
 
 import { env } from '~/env'
 
-export function createConsumer(): Consumer<string, unknown, string, string> {
-  return new Consumer<string, unknown, string, string>({
+export async function createConsumer() {
+  console.log(`Connecting to Kafka brokers: ${env.KAFKA_BROKERS.join(', ')}`)
+
+  const consumer = new Consumer<string, unknown, string, string>({
     groupId: env.KAFKA_GROUP_ID,
     clientId: env.KAFKA_CLIENT_ID,
     bootstrapBrokers: env.KAFKA_BROKERS,
@@ -17,4 +19,9 @@ export function createConsumer(): Consumer<string, unknown, string, string> {
       headerValue: stringDeserializer,
     },
   })
+
+  console.log(`Subscribing to topics: ${env.KAFKA_TOPICS.join(', ')} as group ${env.KAFKA_GROUP_ID}`)
+  const stream = await consumer.consume({ topics: env.KAFKA_TOPICS })
+
+  return [consumer, stream] as const
 }

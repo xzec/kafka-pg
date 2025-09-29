@@ -1,5 +1,6 @@
 # Single-node Kafka stack using the official Apache Kafka image (KRaft mode).
 # See docs/kafka-docker-guide.md for the upstream reference configuration.
+name: kafka-redis
 services:
   kafka:
     image: apache/kafka:latest
@@ -33,6 +34,17 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis/data
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'PING' | redis-cli | grep PONG"]
 volumes:
   kafka_data:
+    driver: local
+  redis_data:
     driver: local

@@ -1,15 +1,19 @@
+import { createClient } from 'redis'
 import { env } from '~/env'
 import { createConsumer } from '~/runtime/createConsumer'
 import { stringifyValue } from '~/utils/stringifyValue'
 
-console.log(`Connecting to Kafka brokers: ${env.KAFKA_BROKERS.join(', ')}`)
-const consumer = createConsumer()
+const redis = createClient({
+  url: env.REDIS_URL,
+})
 
-console.log(`Subscribing to topics: ${env.KAFKA_TOPICS.join(', ')} as group ${env.KAFKA_GROUP_ID}`)
-const stream = await consumer.consume({ topics: env.KAFKA_TOPICS })
+await redis.connect()
+
+redis.on('error', (err) => console.log('Redis Client Error', err))
+
+const [kafka, stream] = await createConsumer()
 
 let shuttingDown = false
-
 const shutdown = async (reason: string): Promise<void> => {
   if (shuttingDown) {
     return
@@ -19,7 +23,7 @@ const shutdown = async (reason: string): Promise<void> => {
   console.log(`Shutting down consumer (${reason})`)
 
   try {
-    consumer.close(true, () => console.log('Consumer shut down.'))
+    kafka.close(true, () => console.log('Consumer shut down.'))
   } catch (error) {
     console.warn('Failed to shut down consumer or stream.', error)
   }
@@ -62,6 +66,13 @@ try {
     console.log(
       `[${message.topic}] partition=${message.partition} offset=${message.offset.toString()} key=${key} value=${valueString}${formattedHeaders}`,
     )
+
+    try {
+      const total = await redis.incr('messages:total')
+      console.log('messages:total incremented to', total)
+    } catch (error) {
+      throw new Error('Failed to increment messages:total', error)
+    }
   }
 } catch (error) {
   console.error('Error while consuming messages', error)
