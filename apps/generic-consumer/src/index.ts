@@ -71,7 +71,7 @@ try {
       const total = await redis.incr('messages:total')
       console.log('messages:total incremented to', total)
     } catch (error) {
-      throw new Error('Failed to increment messages:total', error)
+      throw new Error(`Failed to increment messages:total ${error}`)
     }
   }
 } catch (error) {
