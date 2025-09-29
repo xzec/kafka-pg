@@ -4,11 +4,7 @@ export function stringifyValue(value: unknown): string {
   }
 
   try {
-    return JSON.stringify(
-      value,
-      (_, item) => (typeof item === 'bigint' ? item.toString() : item),
-      2,
-    )
+    return JSON.stringify(value, (_, item) => (typeof item === 'bigint' ? item.toString() : item), 2)
   } catch (error) {
     return `/* unable to stringify value: ${String(error)} */`
   }
